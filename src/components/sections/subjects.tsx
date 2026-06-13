@@ -1,9 +1,14 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-const subjects = [
+interface Subject {
+  name: string;
+  emoji: string;
+}
+
+const subjects: Subject[] = [
   { name: "Mathematics", emoji: "📐" },
   { name: "Science", emoji: "🔬" },
   { name: "Physics", emoji: "⚛️" },
@@ -18,7 +23,7 @@ const subjects = [
   { name: "Business Studies", emoji: "📈" },
 ];
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -27,7 +32,7 @@ const containerVariants = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: {
     opacity: 0,
     y: 30,
