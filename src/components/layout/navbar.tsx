@@ -110,7 +110,7 @@ export function Navbar() {
               )}
 
               <a
-                href="tel:8287549367"
+                href="tel:9717331001"
                 className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-blue-300 dark:hover:border-blue-700 transition-all"
               >
                 <Phone className="w-4 h-4" />
@@ -205,11 +205,11 @@ export function Navbar() {
 
                 <div className="p-4 border-t border-slate-100 dark:border-slate-800 space-y-3">
                   <a
-                    href="tel:8287549367"
+                    href="tel:9717331001"
                     className="flex items-center justify-center gap-2 w-full px-4 py-3 text-sm font-medium text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-xl hover:border-blue-300 transition-all"
                   >
                     <Phone className="w-4 h-4" />
-                    Call Now - 8287549367
+                    Call Now - 9717331001
                   </a>
                   <button
                     onClick={() => scrollToSection("#lead-form")}

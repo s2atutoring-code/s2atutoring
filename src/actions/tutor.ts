@@ -89,7 +89,7 @@ export async function submitTutor(
       }
     }
 
-    const adminEmail = process.env.ADMIN_EMAIL || "support@s2atutoring.com";
+    const adminEmail = process.env.ADMIN_EMAIL || "s2atutoring@gmail.com";
     await resend.emails.send({
       from: "S2A Tutoring <onboarding@resend.dev>",
       to: adminEmail,

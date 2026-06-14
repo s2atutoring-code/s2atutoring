@@ -69,22 +69,22 @@ export function Footer() {
             {/* Contact Info */}
             <div className="space-y-3">
               <a
-                href="tel:8287549367"
+                href="tel:9717331001"
                 className="flex items-center gap-3 text-slate-400 hover:text-blue-400 transition-colors text-sm group"
               >
                 <div className="w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-blue-950 flex items-center justify-center transition-colors">
                   <Phone className="w-4 h-4" />
                 </div>
-                8287549367
+                9717331001
               </a>
               <a
-                href="mailto:support@s2atutoring.com"
+                href="mailto:s2atutoring@gmail.com"
                 className="flex items-center gap-3 text-slate-400 hover:text-blue-400 transition-colors text-sm group"
               >
                 <div className="w-8 h-8 rounded-lg bg-slate-800 group-hover:bg-blue-950 flex items-center justify-center transition-colors">
                   <Mail className="w-4 h-4" />
                 </div>
-                support@s2atutoring.com
+                s2atutoring@gmail.com
               </a>
               <div className="flex items-center gap-3 text-slate-400 text-sm">
                 <div className="w-8 h-8 rounded-lg bg-slate-800 flex items-center justify-center">

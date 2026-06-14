@@ -16,17 +16,17 @@ interface ContactInfo {
 const contactDetails: ContactInfo[] = [
   {
     title: "Phone",
-    value: "8287549367",
+    value: "9717331001",
     description: "Call us for instant support",
     icon: Phone,
-    href: "tel:8287549367",
+    href: "tel:9717331001",
   },
   {
     title: "Email",
-    value: "support@s2atutoring.com",
+    value: "s2atutoring@gmail.com",
     description: "Send us your queries anytime",
     icon: Mail,
-    href: "mailto:support@s2atutoring.com",
+    href: "mailto:s2atutoring@gmail.com",
   },
   {
     title: "Location",
@@ -191,7 +191,7 @@ export default function ContactSection() {
             variants={buttonVariants}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            href="tel:8287549367"
+            href="tel:9717331001"
             className={cn(
               "inline-flex items-center justify-center gap-2.5 w-full sm:w-auto",
               "px-8 py-4 rounded-xl",
@@ -211,7 +211,7 @@ export default function ContactSection() {
             variants={buttonVariants}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            href="https://wa.me/918287549367"
+            href="https://wa.me/919717331001"
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
@@ -233,7 +233,7 @@ export default function ContactSection() {
             variants={buttonVariants}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            href="mailto:support@s2atutoring.com"
+            href="mailto:s2atutoring@gmail.com"
             className={cn(
               "inline-flex items-center justify-center gap-2.5 w-full sm:w-auto",
               "px-8 py-4 rounded-xl",
