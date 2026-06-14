@@ -105,10 +105,76 @@ export async function submitLead(
       `,
     });
 
+    // Send confirmation email to the student/parent
+    try {
+      await transporter.sendMail({
+        from: `"S2A Tutoring" <${process.env.SMTP_USER || "s2atutoring@gmail.com"}>`,
+        to: validated.data.email,
+        subject: `Free Demo Class Requested - S2A Tutoring`,
+        html: `
+          <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0;">
+            <div style="background: linear-gradient(135deg, #0F172A 0%, #1e3a5f 50%, #2563EB 100%); padding: 32px; text-align: center;">
+              <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 700;">S2A Tutoring</h1>
+              <p style="color: #94a3b8; margin: 8px 0 0; font-size: 14px;">Premium Home Tuition Services</p>
+            </div>
+            <div style="padding: 32px; color: #334155;">
+              <h2 style="color: #0F172A; margin: 0 0 16px; font-size: 20px;">Hello ${validated.data.studentName},</h2>
+              <p style="font-size: 15px; line-height: 1.6; margin: 0 0 16px;">
+                Thank you for booking a <strong>Free Demo Class</strong> with S2A Tutoring. We have received your request and our education counselors are already working to find the perfect tutor matching your learning requirements.
+              </p>
+              
+              <div style="background: #f8fafc; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 1px solid #e2e8f0;">
+                <h3 style="color: #0F172A; margin: 0 0 12px; font-size: 16px;">Requested Details</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                  <tr>
+                    <td style="padding: 6px 0; color: #64748b; width: 40%;">Subject</td>
+                    <td style="padding: 6px 0; color: #0F172A; font-weight: 600;">${validated.data.subject}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; color: #64748b;">Class / Grade</td>
+                    <td style="padding: 6px 0; color: #0F172A; font-weight: 600;">${validated.data.grade}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; color: #64748b;">Preferred Timing</td>
+                    <td style="padding: 6px 0; color: #0F172A; font-weight: 600;">${validated.data.preferredTiming || "Flexible"}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; color: #64748b;">Location</td>
+                    <td style="padding: 6px 0; color: #0F172A; font-weight: 600;">${validated.data.location}</td>
+                  </tr>
+                </table>
+              </div>
+
+              <p style="font-size: 15px; line-height: 1.6; margin: 0 0 16px;">
+                <strong>What happens next?</strong>
+              </p>
+              <ol style="font-size: 14px; line-height: 1.6; margin: 0 0 24px; padding-left: 20px; color: #475569;">
+                <li style="margin-bottom: 8px;"><strong>Tutor Matching</strong>: We handpick the best-suited verified tutor from our network based on your needs.</li>
+                <li style="margin-bottom: 8px;"><strong>Demo Scheduling</strong>: Our coordinator will call you within the next 2 hours to confirm your free demo class schedule.</li>
+                <li style="margin-bottom: 8px;"><strong>Free Class</strong>: Attend the session and decide if the teacher fits your learning style.</li>
+              </ol>
+
+              <p style="font-size: 15px; line-height: 1.6; margin: 0 0 24px;">
+                If you have any urgent questions, feel free to call or WhatsApp us directly at <a href="tel:9717331001" style="color: #2563EB; font-weight: 600; text-decoration: none;">+91 9717331001</a>.
+              </p>
+
+              <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center; font-size: 14px; color: #64748b;">
+                Best Regards,<br />
+                <strong>S2A Tutoring Team</strong><br />
+                <span style="font-size: 12px; color: #94a3b8;">Premium Home Tuition Services in Delhi NCR</span>
+              </div>
+            </div>
+          </div>
+        `,
+      });
+    } catch (emailError) {
+      console.error("Student confirmation email failed to send:", emailError);
+    }
+
     return {
       success: true,
       message:
-        "Thank you! Your demo class request has been submitted. We'll contact you within 24 hours.",
+        "Thank you! Your demo class request has been submitted. We'll contact you within 2 hours.",
     };
   } catch (error) {
     console.error("Lead submission error:", error);
