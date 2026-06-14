@@ -124,6 +124,90 @@ export async function submitTutor(
       `,
     });
 
+    // Send confirmation email to the tutor applicant
+    try {
+      await transporter.sendMail({
+        from: `"S2A Tutoring" <${process.env.SMTP_USER || "s2atutoring@gmail.com"}>`,
+        to: validated.data.email,
+        subject: `Tutor Application Received - S2A Tutoring`,
+        html: `
+          <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0;">
+            <div style="background: linear-gradient(135deg, #0F172A 0%, #1e3a5f 50%, #2563EB 100%); padding: 32px; text-align: center;">
+              <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 700;">S2A Tutoring</h1>
+              <p style="color: #94a3b8; margin: 8px 0 0; font-size: 14px;">Premium Home Tuition Services</p>
+            </div>
+            <div style="padding: 32px; color: #334155;">
+              <h2 style="color: #0F172A; margin: 0 0 16px; font-size: 20px;">Hello ${tutorName},</h2>
+              <p style="font-size: 15px; line-height: 1.6; margin: 0 0 16px;">
+                Thank you for applying to join the elite network of educators at S2A Tutoring. We have received your application, and our academic operations team will review your qualifications and experience.
+              </p>
+              
+              <div style="background: #f8fafc; border-radius: 12px; padding: 24px; margin-bottom: 24px; border: 1px solid #e2e8f0;">
+                <h3 style="color: #0F172A; margin: 0 0 12px; font-size: 16px;">Application Summary</h3>
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                  <tr>
+                    <td style="padding: 6px 0; color: #64748b; width: 40%;">Qualification</td>
+                    <td style="padding: 6px 0; color: #0F172A; font-weight: 600;">${validated.data.qualification}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; color: #64748b;">Experience</td>
+                    <td style="padding: 6px 0; color: #0F172A; font-weight: 600;">${validated.data.experience}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; color: #64748b;">Subjects</td>
+                    <td style="padding: 6px 0; color: #0F172A; font-weight: 600;">${validated.data.subjects}</td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 6px 0; color: #64748b;">Location</td>
+                    <td style="padding: 6px 0; color: #0F172A; font-weight: 600;">${validated.data.location}</td>
+                  </tr>
+                </table>
+              </div>
+
+              <p style="font-size: 15px; line-height: 1.6; margin: 0 0 16px;">
+                <strong>What happens next?</strong>
+              </p>
+              <ol style="font-size: 14px; line-height: 1.6; margin: 0 0 24px; padding-left: 20px; color: #475569;">
+                <li style="margin-bottom: 8px;"><strong>Profile Verification</strong>: Our team will verify your uploaded resume and subjects criteria.</li>
+                <li style="margin-bottom: 8px;"><strong>Onboarding Call</strong>: If matching our requirements, a coordinator will reach out to you within the next 48 hours for a brief interview.</li>
+              </ol>
+
+              <!-- CTA Action Buttons -->
+              <div style="margin: 32px 0; text-align: center;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto; border-collapse: collapse;">
+                  <tr>
+                    <td style="border-radius: 12px; background: #2563EB;">
+                      <a href="tel:9717331001" style="display: inline-block; padding: 14px 24px; font-family: 'Inter', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 12px;">
+                        📞 Call Support
+                      </a>
+                    </td>
+                    <td style="width: 16px;"></td>
+                    <td style="border-radius: 12px; background: #10B981;">
+                      <a href="https://wa.me/919717331001?text=Hi%2C%20I%20just%20applied%20as%20a%20tutor%20on%20S2A%20Tutoring" target="_blank" style="display: inline-block; padding: 14px 24px; font-family: 'Inter', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 12px;">
+                        💬 WhatsApp Support
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <p style="font-size: 13px; line-height: 1.6; margin: 0 0 24px; color: #64748b; text-align: center;">
+                If you have any questions or wish to submit additional details, feel free to tap either button to connect with our operations team.
+              </p>
+
+              <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center; font-size: 14px; color: #64748b;">
+                Best Regards,<br />
+                <strong>S2A Tutoring Operations Team</strong><br />
+                <span style="font-size: 12px; color: #94a3b8;">Premium Home Tuition Services in Delhi NCR</span>
+              </div>
+            </div>
+          </div>
+        `,
+      });
+    } catch (emailError) {
+      console.error("Tutor confirmation email failed to send:", emailError);
+    }
+
     return {
       success: true,
       message:
