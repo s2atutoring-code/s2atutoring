@@ -154,8 +154,27 @@ export async function submitLead(
                 <li style="margin-bottom: 8px;"><strong>Free Class</strong>: Attend the session and decide if the teacher fits your learning style.</li>
               </ol>
 
-              <p style="font-size: 15px; line-height: 1.6; margin: 0 0 24px;">
-                If you have any urgent questions, feel free to call or WhatsApp us directly at <a href="tel:9717331001" style="color: #2563EB; font-weight: 600; text-decoration: none;">+91 9717331001</a>.
+              <!-- CTA Action Buttons -->
+              <div style="margin: 32px 0; text-align: center;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: 0 auto; border-collapse: collapse;">
+                  <tr>
+                    <td style="border-radius: 12px; background: #2563EB;">
+                      <a href="tel:9717331001" style="display: inline-block; padding: 14px 24px; font-family: 'Inter', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 12px;">
+                        📞 Call Counselor
+                      </a>
+                    </td>
+                    <td style="width: 16px;"></td>
+                    <td style="border-radius: 12px; background: #10B981;">
+                      <a href="https://wa.me/919717331001?text=Hi%2C%20I%20just%20booked%20a%20free%20demo%20on%20S2A%20Tutoring" target="_blank" style="display: inline-block; padding: 14px 24px; font-family: 'Inter', Arial, sans-serif; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 12px;">
+                        💬 WhatsApp Support
+                      </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+
+              <p style="font-size: 13px; line-height: 1.6; margin: 0 0 24px; color: #64748b; text-align: center;">
+                If you have any questions, feel free to tap either button to connect with our coordinators instantly.
               </p>
 
               <div style="border-top: 1px solid #e2e8f0; padding-top: 24px; text-align: center; font-size: 14px; color: #64748b;">
