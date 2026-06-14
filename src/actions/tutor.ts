@@ -2,7 +2,7 @@
 
 import { z } from "zod";
 import { prisma } from "@/lib/prisma";
-import { resend } from "@/lib/resend";
+import { transporter } from "@/lib/email";
 import { rateLimit } from "@/lib/rate-limit";
 
 const tutorSchema = z.object({
@@ -90,8 +90,8 @@ export async function submitTutor(
     }
 
     const adminEmail = process.env.ADMIN_EMAIL || "s2atutoring@gmail.com";
-    await resend.emails.send({
-      from: "S2A Tutoring <onboarding@resend.dev>",
+    await transporter.sendMail({
+      from: `"S2A Tutoring" <${process.env.SMTP_USER || "s2atutoring@gmail.com"}>`,
       to: adminEmail,
       subject: `New Tutor Application from ${tutorName}`,
       attachments: attachments.length > 0 ? attachments : undefined,
